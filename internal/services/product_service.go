@@ -154,6 +154,10 @@ func (s *ProductService) UpdateProductById(ctx context.Context, id string, req *
 		updateFields["price"] = req.Price
 	}
 
+	if req.Stock != nil {
+		updateFields["stock"] = req.Stock
+	}
+
 	updateFields["updated_at"] = time.Now()
 
 	opts := options.FindOneAndUpdate().SetReturnDocument(options.After)
